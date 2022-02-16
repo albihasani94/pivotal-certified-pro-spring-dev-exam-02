@@ -27,11 +27,12 @@ SOFTWARE.
 */
 package com.apress.cems.pojos.services;
 
-import com.apress.cems.dao.*;
+import com.apress.cems.dao.Evidence;
+import com.apress.cems.dao.Person;
+import com.apress.cems.dao.Storage;
 import com.apress.cems.util.CaseType;
 import com.apress.cems.util.Rank;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,14 +40,16 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Iuliana Cosmina
  * @since 1.0
  */
-// comment the @Disabled annotation to run the test
-@Disabled
 public class SimpleOperationsServiceTest extends SimpleServiceTestBase {
     static final Long DETECTIVE_ID = 1L;
     static final String BADGE_NO = "NY112233";
@@ -98,7 +101,7 @@ public class SimpleOperationsServiceTest extends SimpleServiceTestBase {
 
         assertNotNull(criminalCase);
         assertNotNull(criminalCase.getLeadInvestigator());
-
+        assertFalse(criminalCase.getEvidenceSet().isEmpty());
     }
 
 }
