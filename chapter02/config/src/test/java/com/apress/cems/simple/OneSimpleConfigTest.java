@@ -32,6 +32,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -44,8 +45,7 @@ class OneSimpleConfigTest {
 
     @Test
     void testSimpleConfiguration() {
-        var ctx =
-                new AnnotationConfigApplicationContext(SimpleConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(SimpleConfig.class);
 
         for (String beanName : ctx.getBeanDefinitionNames()) {
             logger.info("Bean " + beanName);
@@ -54,8 +54,7 @@ class OneSimpleConfigTest {
 
     @Test
     void testOneBeanConfiguration() {
-        var ctx =
-                new AnnotationConfigApplicationContext(OneBeanConfig.class);
+        var ctx = new AnnotationConfigApplicationContext(OneBeanConfig.class);
 
         var simpleBeanOne = ctx.getBean(SimpleBean.class);
         var simpleBeanTwo = ctx.getBean(SimpleBean.class);
